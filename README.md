@@ -6,9 +6,9 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+stable](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![CRAN
-status](https://www.r-pkg.org/badges/version/flirtemp)](https://CRAN.R-project.org/package=flirtemp)
+status](https://www.r-pkg.org/badges/version/rflirtool)](https://CRAN.R-project.org/package=rflirtool)
 <!-- badges: end -->
 
 # rflirtool: FLIR Data Processing Toolkit for vegetation plots at RMBL
