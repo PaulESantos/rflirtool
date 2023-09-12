@@ -22,7 +22,3 @@ Read csv files generated with \href{http://www.flir.com/instruments/display/?id=
 Building a tidy version of the csv files, combining the metadata and data matrix.
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 }
-\examples{
-files <-  system.file("extdata", package = "flirtools")
-df <- read_flir_csv(files[1], degrees = "c")
-}

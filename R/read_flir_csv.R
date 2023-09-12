@@ -11,10 +11,6 @@
 #'
 #' @return A tibble.
 #' @export
-#'
-#' @examples
-#' files <-  system.file("extdata", package = "flirtools")
-#' df <- read_flir_csv(files[1], degrees = "c")
 read_flir_csv <- function(file_path, folder_out = NULL, degrees = "f") {
   text <- readLines(file_path)
   text <- trimws(text[nchar(text) > 0 ])

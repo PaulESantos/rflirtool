@@ -1,5 +1,5 @@
-Package: flirtools
-Title: What the Package Does (One Line, Title Case)
+Package: rflirtool
+Title: FLIR Data Processing Toolkit for Vegetation Analysis
 Version: 0.0.0.1
 Authors@R: 
     c(person(given = "Paul Efren",
@@ -9,8 +9,8 @@ Authors@R:
            comment = c(ORCID = "0000-0002-6635-0375")),
       person(given = "Macroecology Lab",
              role = c("cph", "fnd")))
-Date: 2021-02-05
-Description: What the package does (one paragraph).
+Date: 2023-09-05
+Description: Provides access to functions that simplify the processing of CSV data files generated with FLIR Tools software. Specifically designed to streamline the analysis of thermal images captured with FLIR cameras, with a focus on vegetation research and analysis. Offers a comprehensive set of tools for efficiently handling and visualizing thermal data from FLIR cameras.
 License: MIT + file LICENSE
 Suggests: 
     testthat (>= 3.0.0)
@@ -18,10 +18,9 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.3
 Imports: 
     dplyr,
-    tidyr,
     readr,
-    stringr,
-    crayon
+    tibble,
+    tidyr
