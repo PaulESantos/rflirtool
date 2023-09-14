@@ -38,10 +38,33 @@ The **rflirtool** package is a comprehensive toolkit for processing and analyzin
 To install the latest development version from GitHub, you can use the `pak` package:
 
 ``` r
-pak::pkg_install("PaulESantos/rflirtool")
+pak::pak("PaulESantos/rflirtool")
 ```
 
 
 ## Getting Started
 
-Here's a quick example of how to use rflirtools to load and analyze thermal data:
+Here's a quick example of how to use `rflirtools` to load and analyze thermal data:
+
+```{r}
+library(rflirtool)
+filename <- system.file("extdata/1.csv", package = "rflirtool")
+
+get_flir_data_matrix(filename) |> 
+  tibble::as_tibble()
+```
+
+```{r}
+filename1 <- system.file("extdata/mo_1-4_T_u.csv", package = "rflirtool")
+get_flir_data_matrix(filename1) |> 
+  tibble::as_tibble()
+```
+
+
+```{r}
+filename1 <- system.file("extdata/rflirtool_1.csv", package = "rflirtool")
+get_flir_data_matrix(filename1) |> 
+  tibble::as_tibble()
+```
+
+

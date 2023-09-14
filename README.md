@@ -35,10 +35,66 @@ To install the latest development version from GitHub, you can use the
 `pak` package:
 
 ``` r
-pak::pkg_install("PaulESantos/rflirtool")
+pak::pak("PaulESantos/rflirtool")
 ```
 
 ## Getting Started
 
-Here’s a quick example of how to use rflirtools to load and analyze
+Here’s a quick example of how to use `rflirtools` to load and analyze
 thermal data:
+
+``` r
+library(rflirtool)
+filename <- system.file("extdata/1.csv", package = "rflirtool")
+
+get_flir_data_matrix(filename) |> 
+  tibble::as_tibble()
+#> Review the scale of measurements.
+#> # A tibble: 240 × 321
+#>    flir_id     X1    X2    X3    X4    X5    X6    X7    X8    X9   X10   X11
+#>    <chr>    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#>  1 FLIR3937  18.3  18.4  18.4  18.5  18.5  18.5  18.5  18.5  18.3  18.1  17.9
+#>  2 FLIR3937  18.3  18.4  18.4  18.5  18.5  18.5  18.5  18.4  18.2  18.1  17.9
+#>  3 FLIR3937  18.3  18.4  18.4  18.4  18.4  18.3  18.3  18.2  18.1  18.0  17.9
+#>  4 FLIR3937  18.5  18.5  18.5  18.4  18.4  18.3  18.2  18.2  18.1  18.0  17.9
+#>  5 FLIR3937  18.8  18.7  18.6  18.5  18.5  18.4  18.3  18.3  18.2  18.1  17.9
+#>  6 FLIR3937  19.2  19.1  18.8  18.6  18.6  18.6  18.5  18.4  18.3  18.2  18.0
+#>  7 FLIR3937  19.6  19.4  19.0  18.8  18.7  18.6  18.6  18.6  18.5  18.4  18.2
+#>  8 FLIR3937  19.6  19.4  19.1  18.9  18.8  18.7  18.7  18.7  18.6  18.5  18.3
+#>  9 FLIR3937  19.2  19.2  19.0  18.9  18.8  18.7  18.7  18.7  18.6  18.5  18.4
+#> 10 FLIR3937  18.9  18.9  18.9  18.8  18.7  18.7  18.7  18.7  18.6  18.5  18.4
+#> # ℹ 230 more rows
+#> # ℹ 309 more variables: X12 <dbl>, X13 <dbl>, X14 <dbl>, X15 <dbl>, X16 <dbl>,
+#> #   X17 <dbl>, X18 <dbl>, X19 <dbl>, X20 <dbl>, X21 <dbl>, X22 <dbl>,
+#> #   X23 <dbl>, X24 <dbl>, X25 <dbl>, X26 <dbl>, X27 <dbl>, X28 <dbl>,
+#> #   X29 <dbl>, X30 <dbl>, X31 <dbl>, X32 <dbl>, X33 <dbl>, X34 <dbl>,
+#> #   X35 <dbl>, X36 <dbl>, X37 <dbl>, X38 <dbl>, X39 <dbl>, X40 <dbl>,
+#> #   X41 <dbl>, X42 <dbl>, X43 <dbl>, X44 <dbl>, X45 <dbl>, X46 <dbl>, …
+```
+
+``` r
+filename1 <- system.file("extdata/mo_1-4_T_u.csv", package = "rflirtool")
+get_flir_data_matrix(filename1) |> 
+  tibble::as_tibble()
+#> Temperature measurements are in Fahrenheit
+#> # A tibble: 239 × 319
+#>    flir_id      X1    X2    X3    X4    X5    X6    X7    X8    X9   X10   X11
+#>    <chr>     <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#>  1 mo1-4_T_1  64.7  65.6  66.7  67.9  69.0  69.7  69.9  69.5  69.3  69.2  69.4
+#>  2 mo1-4_T_1  64.2  64.9  65.9  66.9  68.0  68.9  69.2  69.1  68.9  68.9  69.0
+#>  3 mo1-4_T_1  63.3  63.7  64.3  65.0  66.0  67.1  67.9  68.1  68.1  68.1  68.2
+#>  4 mo1-4_T_1  62.7  62.8  63.1  63.6  64.4  65.5  66.3  66.7  67.0  67.2  67.5
+#>  5 mo1-4_T_1  62.5  62.4  62.5  62.8  63.4  64.1  64.7  65.0  65.5  66.3  66.7
+#>  6 mo1-4_T_1  62.4  62.2  62.2  62.4  62.7  63.1  63.3  63.4  63.9  64.6  64.9
+#>  7 mo1-4_T_1  62.2  62.0  61.9  62.0  62.1  62.3  62.3  62.2  62.2  62.3  62.3
+#>  8 mo1-4_T_1  61.9  61.7  61.6  61.6  61.7  61.7  61.6  61.4  61.1  60.8  60.6
+#>  9 mo1-4_T_1  61.7  61.5  61.3  61.3  61.3  61.4  61.3  61.0  60.7  60.4  60.0
+#> 10 mo1-4_T_1  61.5  61.2  61.1  61    61.0  61.2  61.0  60.7  60.4  60.1  59.6
+#> # ℹ 229 more rows
+#> # ℹ 307 more variables: X12 <dbl>, X13 <dbl>, X14 <dbl>, X15 <dbl>, X16 <dbl>,
+#> #   X17 <dbl>, X18 <dbl>, X19 <dbl>, X20 <dbl>, X21 <dbl>, X22 <dbl>,
+#> #   X23 <dbl>, X24 <dbl>, X25 <dbl>, X26 <dbl>, X27 <dbl>, X28 <dbl>,
+#> #   X29 <dbl>, X30 <dbl>, X31 <dbl>, X32 <dbl>, X33 <dbl>, X34 <dbl>,
+#> #   X35 <dbl>, X36 <dbl>, X37 <dbl>, X38 <dbl>, X39 <dbl>, X40 <dbl>,
+#> #   X41 <dbl>, X42 <dbl>, X43 <dbl>, X44 <dbl>, X45 <dbl>, X46 <dbl>, …
+```
