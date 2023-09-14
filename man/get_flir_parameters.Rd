@@ -4,7 +4,7 @@
 \alias{get_flir_parameters}
 \title{Get FLIR Parameters}
 \usage{
-get_flir_parameters(flir_csv_path)
+get_flir_parameters(flir_obj)
 }
 \arguments{
 \item{flir_csv_path_path}{A character vector containing the contents of a FLIR CSV file.}

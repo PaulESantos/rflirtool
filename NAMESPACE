@@ -2,8 +2,3 @@
 
 export(get_flir_data_matrix)
 export(get_flir_summary)
-export(read_flir_csv)
-importFrom(dplyr,bind_cols)
-importFrom(dplyr,summarise)
-importFrom(readr,read_delim)
-importFrom(tidyr,pivot_longer)

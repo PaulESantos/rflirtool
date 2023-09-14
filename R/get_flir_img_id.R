@@ -7,8 +7,8 @@
 #' @return The FLIR image number.
 #'
 #' @keywords internal
-get_flir_img_id <- function(flir_csv_path) {
-  flir_id_row <- grep("File", flir_csv_path)
-  flir_id <- basename(flir_csv_path[flir_id_row])
+get_flir_img_id <- function(flir_obj) {
+  flir_id_row <- grep("File", flir_obj)
+  flir_id <- basename(flir_obj[flir_id_row])
   return(flir_id)
 }

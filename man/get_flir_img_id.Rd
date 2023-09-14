@@ -4,7 +4,7 @@
 \alias{get_flir_img_id}
 \title{Get FLIR Image ID}
 \usage{
-get_flir_img_id(flir_csv_path)
+get_flir_img_id(flir_obj)
 }
 \arguments{
 \item{flir_csv_path}{The path to the FLIR CSV file.}
