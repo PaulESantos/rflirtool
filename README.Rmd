@@ -46,6 +46,8 @@ pak::pak("PaulESantos/rflirtool")
 
 Here's a quick example of how to use `rflirtools` to load and analyze thermal data:
 
+- `get_flir_data_matrix()` 
+
 ```{r}
 library(rflirtool)
 filename <- system.file("extdata/1.csv", package = "rflirtool")
@@ -67,4 +69,19 @@ get_flir_data_matrix(filename1) |>
   tibble::as_tibble()
 ```
 
+- `get_flir_summary()`
 
+```{r}
+filename1 <- system.file("extdata/rflirtool_1.csv", package = "rflirtool")
+get_flir_data_matrix(filename1) |> 
+  get_flir_summary() |> 
+  tibble::as_tibble()
+```
+
+
+```{r}
+filename1 <- system.file("extdata/mo_1-4_T_u.csv", package = "rflirtool")
+get_flir_data_matrix(filename1) |> 
+  get_flir_summary() |> 
+  tibble::as_tibble()
+```

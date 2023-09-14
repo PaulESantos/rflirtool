@@ -43,6 +43,8 @@ pak::pak("PaulESantos/rflirtool")
 Here’s a quick example of how to use `rflirtools` to load and analyze
 thermal data:
 
+- `get_flir_data_matrix()`
+
 ``` r
 library(rflirtool)
 filename <- system.file("extdata/1.csv", package = "rflirtool")
@@ -97,4 +99,57 @@ get_flir_data_matrix(filename1) |>
 #> #   X29 <dbl>, X30 <dbl>, X31 <dbl>, X32 <dbl>, X33 <dbl>, X34 <dbl>,
 #> #   X35 <dbl>, X36 <dbl>, X37 <dbl>, X38 <dbl>, X39 <dbl>, X40 <dbl>,
 #> #   X41 <dbl>, X42 <dbl>, X43 <dbl>, X44 <dbl>, X45 <dbl>, X46 <dbl>, …
+```
+
+``` r
+filename1 <- system.file("extdata/rflirtool_1.csv", package = "rflirtool")
+get_flir_data_matrix(filename1) |> 
+  tibble::as_tibble()
+#> Temperature measurements are in Celsius
+#> # A tibble: 240 × 321
+#>    flir_id     X1    X2    X3    X4    X5    X6    X7    X8    X9   X10   X11
+#>    <chr>    <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#>  1 FLIR3943  19.0  19.0  19.1  19.2  19.3  19.4  19.5  19.6  19.6  19.5  19.3
+#>  2 FLIR3943  19.1  19.1  19.2  19.3  19.4  19.5  19.6  19.6  19.6  19.5  19.4
+#>  3 FLIR3943  19.2  19.3  19.3  19.4  19.5  19.5  19.6  19.7  19.7  19.6  19.4
+#>  4 FLIR3943  19.5  19.5  19.5  19.5  19.6  19.7  19.7  19.7  19.8  19.7  19.5
+#>  5 FLIR3943  19.6  19.6  19.7  19.7  19.7  19.7  19.8  19.8  19.8  19.7  19.5
+#>  6 FLIR3943  19.8  19.8  19.7  19.7  19.7  19.7  19.7  19.6  19.5  19.4  19.3
+#>  7 FLIR3943  19.8  19.8  19.7  19.6  19.6  19.5  19.4  19.2  19.0  18.8  18.9
+#>  8 FLIR3943  19.8  19.7  19.6  19.5  19.4  19.2  19.0  18.7  18.4  18.3  18.4
+#>  9 FLIR3943  19.6  19.5  19.4  19.2  19.1  18.8  18.4  18.1  17.9  17.9  18.1
+#> 10 FLIR3943  19.5  19.4  19.1  19.0  18.9  18.6  18.2  17.9  17.8  17.8  18.1
+#> # ℹ 230 more rows
+#> # ℹ 309 more variables: X12 <dbl>, X13 <dbl>, X14 <dbl>, X15 <dbl>, X16 <dbl>,
+#> #   X17 <dbl>, X18 <dbl>, X19 <dbl>, X20 <dbl>, X21 <dbl>, X22 <dbl>,
+#> #   X23 <dbl>, X24 <dbl>, X25 <dbl>, X26 <dbl>, X27 <dbl>, X28 <dbl>,
+#> #   X29 <dbl>, X30 <dbl>, X31 <dbl>, X32 <dbl>, X33 <dbl>, X34 <dbl>,
+#> #   X35 <dbl>, X36 <dbl>, X37 <dbl>, X38 <dbl>, X39 <dbl>, X40 <dbl>,
+#> #   X41 <dbl>, X42 <dbl>, X43 <dbl>, X44 <dbl>, X45 <dbl>, X46 <dbl>, …
+```
+
+- `get_flir_summary()`
+
+``` r
+filename1 <- system.file("extdata/rflirtool_1.csv", package = "rflirtool")
+get_flir_data_matrix(filename1) |> 
+  get_flir_summary() |> 
+  tibble::as_tibble()
+#> Temperature measurements are in Celsius
+#> # A tibble: 1 × 7
+#>   id        mean variance median standard_deviation standard_error   iqr
+#>   <chr>    <dbl>    <dbl>  <dbl>              <dbl>          <dbl> <dbl>
+#> 1 FLIR3943  25.1     90.7   22.0               9.52         0.0344  13.1
+```
+
+``` r
+filename1 <- system.file("extdata/mo_1-4_T_u.csv", package = "rflirtool")
+get_flir_data_matrix(filename1) |> 
+  get_flir_summary() |> 
+  tibble::as_tibble()
+#> Temperature measurements are in Fahrenheit
+#> # A tibble: 1 × 7
+#>   id         mean variance median standard_deviation standard_error   iqr
+#>   <chr>     <dbl>    <dbl>  <dbl>              <dbl>          <dbl> <dbl>
+#> 1 mo1-4_T_1  73.2     57.9   72.7               7.61         0.0276  10.1
 ```
