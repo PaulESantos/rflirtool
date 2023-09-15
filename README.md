@@ -153,3 +153,22 @@ get_flir_data_matrix(filename1) |>
 #>   <chr>     <dbl>    <dbl>  <dbl>              <dbl>          <dbl> <dbl>
 #> 1 mo1-4_T_1  73.2     57.9   72.7               7.61         0.0276  10.1
 ```
+
+# Citation
+
+``` r
+citation("rflirtool")
+#> To cite package 'rflirtool' in publications use:
+#> 
+#>   Santos Andrade P (2023). _rflirtool: FLIR Data Processing Toolkit for
+#>   Vegetation Analysis_. R package version 0.0.0.1.
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Manual{,
+#>     title = {rflirtool: FLIR Data Processing Toolkit for Vegetation Analysis},
+#>     author = {Paul Efren {Santos Andrade}},
+#>     year = {2023},
+#>     note = {R package version 0.0.0.1},
+#>   }
+```

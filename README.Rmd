@@ -85,3 +85,10 @@ get_flir_data_matrix(filename1) |>
   get_flir_summary() |> 
   tibble::as_tibble()
 ```
+
+# Citation 
+
+```{r}
+citation("rflirtool")
+```
+
