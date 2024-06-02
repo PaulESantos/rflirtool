@@ -9,18 +9,25 @@
 #'
 #' @export
 get_flir_summary <- function(flir_obj) {
-  id <- unique(flir_obj$flir_id)
-  long_df <- flir_obj |>
-    utils::stack(-flir_id)
+  id <- flir_obj$flir_id |> unique()
+  data_vars <- grep("temp_[0-9]{1,}$",
+                    names(flir_obj),
+                    value = TRUE)
 
-    data.frame(
-      id = id,
-      mean = mean(long_df$values, na.rm = TRUE),
-      variance = stats::var(long_df$values, na.rm = TRUE),
-      median = stats::median(long_df$values, na.rm = TRUE),
-      standard_deviation = stats::sd(long_df$values, na.rm = TRUE),
-      standard_error = stats::sd(long_df$values, na.rm = TRUE) / sqrt(length(long_df$values)),
-      iqr = stats::IQR(long_df$values)
-    )
+  long_df <- utils::stack(flir_obj[,data_vars])
+
+  data.frame(
+    flir_id = id,
+    mean = mean(long_df$values, na.rm = TRUE),
+    variance = stats::var(long_df$values, na.rm = TRUE),
+    median = stats::median(long_df$values, na.rm = TRUE),
+    standard_deviation = stats::sd(long_df$values, na.rm = TRUE),
+    standard_error = stats::sd(long_df$values, na.rm = TRUE) / sqrt(length(long_df$values)),
+    iqr = stats::IQR(long_df$values),
+    min = min(long_df$values, na.rm = TRUE),
+    max = max(long_df$values, na.rm = TRUE),
+    kurtosis = moments::kurtosis(long_df$values, na.rm = TRUE),
+    skewness = moments::skewness(long_df$values, na.rm = TRUE)
+  ) |>
+    unique()
 }
-

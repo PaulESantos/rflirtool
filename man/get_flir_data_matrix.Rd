@@ -4,10 +4,10 @@
 \alias{get_flir_data_matrix}
 \title{Get FLIR Data Matrix}
 \usage{
-get_flir_data_matrix(fpath)
+get_flir_data_matrix(file)
 }
 \arguments{
-\item{fpath}{The path to the FLIR CSV file containing the temperature data.}
+\item{file}{The path to the FLIR CSV file containing the temperature data.}
 }
 \value{
 A data matrix containing the temperature measurements from the FLIR image, along with the FLIR image ID.
